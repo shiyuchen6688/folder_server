@@ -5,10 +5,10 @@ function App() {
     <div>
       <Folder name="Folder1">
         <Folder name="Folder2">
-          <File name="File2" />
-          <File name="File3" />
+          <File name="File2.mp4" />
+          <File name="File3.png" />
         </Folder>
-        <File name="File1" />
+        <File name="File1.jpeg" />
       </Folder>
       <Folder name="Folder3" />
 
@@ -44,6 +44,18 @@ const Folder = (props) => {
 }
 
 const File = (props) => {
-  return <h5>{props.name}</h5>
+  const { name } = props;
+  const extension = name.split('.')[1];
+  const fileIconDict = {
+    "mp4": "music icon",
+    "jpeg": "file image icon",
+    "png": "file image outline icon"
+  };
+  return (
+    <div>
+      <i className={fileIconDict[extension]}></i>
+      {name}
+    </div>
+  )
 }
 export default App;
